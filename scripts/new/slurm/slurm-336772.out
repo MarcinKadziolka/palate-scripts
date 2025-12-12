@@ -1,0 +1,13 @@
+Running script
+/shared/sets/datasets/CIFAR10-dgm_eval/CIFAR10/train
+/shared/sets/datasets/CIFAR10-dgm_eval/CIFAR10/test
+Traceback (most recent call last):
+  File "/home/gmkadzio/continued/main.py", line 14, in <module>
+    from models.load_encoder import MODELS, load_encoder
+  File "/home/gmkadzio/continued/models/load_encoder.py", line 4, in <module>
+    from .dinov3 import DINOv3Encoder #dodany import
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gmkadzio/continued/models/dinov3.py", line 7, in <module>
+    from safetensors.torch import load_file
+ModuleNotFoundError: No module named 'safetensors'
+Task completed

@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# USAGE
+# chmod +x ./log.sh
+# Make this script is:
+# echo 'export PATH="$HOME/scripts/new:$PATH"' >> ~/.bashrc
+# Add alias for easier usage:
+# echo 'alias log="log.sh"' >> ~/.bash_aliases
+# Being in the directory with the slurm-<num>.out type log
+# This will find the slurm output with the target number and perform cat on it
+
+# Find all slurm-<num>.out files in the current directory
+files=(slurm-*.out)
+
+# Handle "no match" case
+if [[ ! -e "${files[0]}" ]]; then
+    echo "No slurm-<num>.out files found in $(pwd)"
+    exit 1
+fi
+
+# Extract numbers and find the max
+max_num=$(ls slurm-*.out 2>/dev/null \
+    | sed -E 's/slurm-([0-9]+)\.out/\1/' \
+    | sort -n \
+    | tail -1)
+
+target="slurm-${max_num}.out"
+
+if [[ ! -f "$target" ]]; then
+    echo "File $target not found"
+    exit 1
+fi
+
+tail "$target" -n 100
+
+
+# Prepare archive directory
+archive_dir="./slurm"
+mkdir -p "$archive_dir"
+
+# Move all except the target into ./slurm
+for f in slurm-*.out; do
+    if [[ "$f" != "$target" ]]; then
+        mv "$f" "$archive_dir/"
+    fi
+done

@@ -1,0 +1,22 @@
+Running script
+/shared/sets/datasets/CIFAR10-dgm_eval/CIFAR10/train
+/shared/sets/datasets/CIFAR10-dgm_eval/CIFAR10/test
+2025-12-12 21:37:26,325 [INFO] Starting main.py
+2025-12-12 21:37:26,327 [INFO] Device: cuda, num_workers: 8
+2025-12-12 21:37:26,327 [INFO] Loading model: dinov3
+Traceback (most recent call last):
+  File "/home/gmkadzio/continued/main.py", line 388, in <module>
+    main()
+    ~~~~^^
+  File "/home/gmkadzio/continued/main.py", line 343, in main
+    model = get_model(args, device)
+  File "/home/gmkadzio/continued/main.py", line 211, in get_model
+    return load_encoder(
+        args.model,
+    ...<5 lines>...
+        depth=args.depth,
+    )
+  File "/home/gmkadzio/continued/models/load_encoder.py", line 25, in load_encoder
+    encoder = model_cls(**{arg: kwargs[arg] for arg in arguments if arg in kwargs})
+TypeError: Can't instantiate abstract class DINOv3Encoder without an implementation for abstract method 'transform'
+Task completed
