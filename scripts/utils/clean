@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# USAGE
+# chmod +x ./log.sh
+# Make this script is:
+# echo 'export PATH="$HOME/scripts/new:$PATH"' >> ~/.bashrc
+# Add alias for easier usage:
+# echo 'alias log="log.sh"' >> ~/.bash_aliases
+# Being in the directory with the slurm-<num>.out type log
+# This will find the slurm output with the target number and perform cat on it
+
+# Find all slurm-<num>.out files in the current directory
+files=(slurm-*.out)
+# Handle "no match" case
+if [[ ! -e "${files[0]}" ]]; then
+    echo "No slurm-<num>.out files found in $(pwd)"
+    exit 1
+fi
+
+for f in slurm-*.out; do
+    echo "Cleaning" $f
+    rm "$f"
+done
