@@ -17,10 +17,10 @@ alias gp="git pull"
 alias h="cd ~"
 alias d="cd /shared/sets/datasets"
 alias c="cd /shared/sets/datasets/CIFAR10-dgm_eval"
+alias r="cd /shared/sets/datasets/CIFAR10-dgm_eval_repr"
 
 alias p="cd ~/package_management_scripts"
 alias con="cd ~/continued"
 alias so="cd ~/scripts/old"
-alias sn="cd ~/scripts/new"
-
-alias log="log.sh"
+alias su="cd ~/scripts/utils"
+alias s="cd ~/scripts"
