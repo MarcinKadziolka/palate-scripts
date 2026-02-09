@@ -24,7 +24,6 @@ DISTORTIONS=(
 mkdir -p kdd_submission
 INDEX=0
 for train_folder in "$DATASET_BASE"/*train; do
-    train_folder="/shared/sets/datasets/CIFAR10-dgm_eval/interpolation_all/PFGMPP/0%train"
     TRAIN_NAME=$(basename "$train_folder")
 
     for distortion in "${DISTORTIONS[@]}"; do
